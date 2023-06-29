@@ -8,31 +8,31 @@ interface VideoProps {
   category: "Agências" | "ChatBot" | "Marketing Digital" | "Geração de Leads" | "Mídia Paga";
 }
 
-const videos = [
+const videos: VideoProps[] = [
   {
     "id": 1,
     "title": "Como aumentar sua Geração de Leads feat. Traktor (1/1)",
     "description": "bjvjvjvjvjvjv",
     "url": "https://www.youtube.com/watch?v=9L9ZkGX1p_k&ab_channel=Leadster-MarketingConversacional",
-    "date": "2023-01-01",
+    "date": "2023-01-01T12:00:00.000Z",
     "thumbnail": "https://github.com/juan-20/Video-portifolio/blob/main/src/assets/thumbnail.png?raw=true",
     "category": "Agências"
   },
   {
     "id": 2,
-    "title": "Como aumentar sua Geração de Leads feat. Traktor",
+    "title": "Como aumentar sua Geração de Leads feat. Traktor (2/2)",
     "description": "",
     "url": "https://www.youtube.com/watch?v=9L9ZkGX1p_k&ab_channel=Leadster-MarketingConversacional",
-    "date": "2023-02-02",
+    "date": "2023-02-02T12:00:00.000Z",
     "thumbnail": "https://github.com/juan-20/Video-portifolio/blob/main/src/assets/thumbnail.png?raw=true",
     "category": "ChatBot"
   },
   {
     "id": 3,
-    "title": "Como aumentar sua Geração de Leads feat. Traktor",
+    "title": "Como aumentar sua Geração de Leads feat. Traktor (3/3)",
     "description": "",
     "url": "https://www.youtube.com/watch?v=9L9ZkGX1p_k&ab_channel=Leadster-MarketingConversacional",
-    "date": "2023-03-03",
+    "date": "2023-03-03T12:00:00.000Z",
     "thumbnail": "https://github.com/juan-20/Video-portifolio/blob/main/src/assets/thumbnail.png?raw=true",
     "category": "Agências"
   },
@@ -101,7 +101,7 @@ const videos = [
   },
   {
     "id": 11,
-    "title": "Como aumentar sua Geração de Leads feat. Traktor",
+    "title": "Como aumentar sua Geração de Leads feat. Traktor (11/11)",
     "description": "",
     "url": "https://www.youtube.com/watch?v=9L9ZkGX1p_k&ab_channel=Leadster-MarketingConversacional",
     "date": "2023-11-11",
