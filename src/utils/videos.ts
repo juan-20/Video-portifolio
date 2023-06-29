@@ -12,22 +12,22 @@ const videos: VideoProps[] = [
     "category": "Agências",
     "dowload":  [
       {
-      "link": "https://docs.google.com/spreadsheets/d/1MyOh-mJkUW4GT9ppbTQeeBsyKFGCdmRfTtjn-fJRO7E/edit?usp=sharing",
+      "link": "https://raw.githubusercontent.com/juan-20/Video-portifolio/main/public/teste.xlsx",
       "name": "Spreadsheet",
       "type": "xls"
       },
       {
-      "link": "jbj",
+      "link": "https://raw.githubusercontent.com/juan-20/Video-portifolio/main/public/teste.docx",
       "name": "Document",
       "type": "doc"
       },
       {
-      "link": "jbj",
+      "link": "https://raw.githubusercontent.com/juan-20/Video-portifolio/main/public/Apresentação%20sem%20título.pptx",
       "name": "Presentation",
       "type": "ppt"
       },
       {
-      "link": "jbj",
+      "link": "https://github.com/juan-20/Video-portifolio/archive/refs/heads/main.zip",
       "name": "Folder",
       "type": "zip"
       },

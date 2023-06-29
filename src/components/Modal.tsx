@@ -36,10 +36,11 @@ const fillColor = {
 }
 
 export const Modal = ({ content, isModalOpen, setIsModalOpen }: ModalProps) => {
-  const handleDownload = (url: string) => {
+
+  const handleDownload = (url: string, type: string) => {
     const link = document.createElement('a');
     link.href = url;
-    link.download = 'myfile.xlsx'; // Replace with your own file name
+    link.download = `myfile.${type}`; // Replace with your own file name
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -48,7 +49,7 @@ export const Modal = ({ content, isModalOpen, setIsModalOpen }: ModalProps) => {
     <>
       <ReactModal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}
         overlayClassName="custom-modal"
-        className="modal-content border-t-4 border-sky-600 w-1/3 h-auto rounded-xl">
+        className="modal-content border-t-4 border-sky-600 w-1/3 h-5/6 rounded-xl">
         <div className="header flex flex-col items-start gap-4 pb-9">
         <div className="w-full flex items-end justify-end">
           <button className='' onClick={() => setIsModalOpen(false)}>
@@ -62,7 +63,7 @@ export const Modal = ({ content, isModalOpen, setIsModalOpen }: ModalProps) => {
           </div>
         </div>
         <iframe
-                className="mx-auto w-full h-2/4"
+                className="mx-auto w-full h-2/5"
                 src={`https://www.youtube.com/embed/${content.url}`}
                 title={content.title}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -76,11 +77,12 @@ export const Modal = ({ content, isModalOpen, setIsModalOpen }: ModalProps) => {
         </div>
         <div className="">
           <h2 className='font-bold pb-2 pt-4 border-b-2 border-teal-900'>Dowload</h2>
-          <div className="dowload flex gap-2 pt-2 
-          whitespace-nowrap scroll-smooth relative overflow-x-hidden">
+          <div className="pb-4 pt-2">
+          <div className="dowload flex gap-2 pt-2 pb-2
+          whitespace-nowrap scroll-smooth relative overflow-x-auto">
             {content.dowload?.map((item, index)=>(
             <button 
-            onClick={() => handleDownload(item.link)}
+            onClick={() => handleDownload(item.link, item.type)}
             className={`${textColor[item.type]} ${textBackground[item.type]} rounded flex justify-center items-center`}
             key={index} type='button'>
               <div className={`${iconBackground[item.type]} p-2 }`}>
@@ -89,6 +91,7 @@ export const Modal = ({ content, isModalOpen, setIsModalOpen }: ModalProps) => {
               <p className='p-2'>{item.name}.{item.type}</p>
             </button>
             ))}
+          </div>
           </div>
         </div>
       </ReactModal>
