@@ -48,10 +48,10 @@ export default function VideoPage() {
       console.log(b);
       const dateA = a.id
       const dateB = b.id
-      if (dateA < dateB) {
+      if (dateA > dateB) {
         return sortOrder === 'asc' ? -1 : 1
       }
-      if (dateA > dateB) {
+      if (dateA < dateB) {
         return sortOrder === 'desc' ? 1 : -1
       }
       const categoryA = a.category.toLowerCase()
@@ -82,36 +82,44 @@ export default function VideoPage() {
 
   return (
     <div>
-    <div>
-    <p>Ordernar por</p>
-    <select value={sortOrder} onChange={(e) => sortVideos('All', sortOrder)}>
-      <option value="asc">Data de publicação (mais antigos)</option>
-      <option value="desc">Data de publicação (mais novos)</option>
-    </select>
-        <div className='flex gap-4'>
+
+    <div className='flex w-full justify-between gap-24 border-b-2 border-gray-300 pb-4 pt-12'>
+ 
+        <div className='flex w-fit gap-4'>
           {categories.map((category) => (
             <button 
-            className='border-2 border-black text-black cursor-pointer hover:border-sky-500 hover:text-sky-500 focus:bg-sky-500 focus:text-white  w-auto pr-4 pl-4 pt-1 pb-1 rounded-full' key={category} 
-            onClick={(e) => {sortVideos(category, sortOrder), setSortCategory(category), handlePageChange}}>
+            className='border-2 border-teal-900 text-teal-900 cursor-pointer hover:border-sky-500 hover:text-sky-500 focus:bg-sky-500 focus:text-white  w-auto pr-4 pl-4 pt-1 pb-1 rounded-full' key={category} 
+            onClick={() => {sortVideos(category, sortOrder), setSortCategory(category), handlePageChange}}>
               {category}
             </button>
           ))}
-            <button 
-            className='border-2 border-black text-black cursor-pointer hover:border-sky-500 hover:text-sky-500 focus:bg-sky-500 focus:text-white  w-auto pr-4 pl-4 pt-1 pb-1 rounded-full' 
+            {/* <button 
+            className='border-2 border-teal-900 text-teal-900 cursor-pointer hover:border-sky-500 hover:text-sky-500 focus:bg-sky-500 focus:text-white  w-auto pr-4 pl-4 pt-1 pb-1 rounded-full' 
             onClick={(e) => {sortVideos('All', sortOrder), setSortCategory('All'), handlePageChange}}>
               All
-            </button>
+            </button> */}
           </div>
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pb-12">
+
+          <div className="flex items-center justify-center gap-4">
+            <p className='font-bold'>Ordernar por</p>
+            <select className='border-2 border-teal-900 text-teal-900 h-10 cursor-pointer rounded-xl'
+             value={sortOrder} onChange={() => sortVideos('All', sortOrder)}>
+              <option value="asc" selected>Data de publicação</option>
+              <option value="asc">Mais antigos</option>
+              <option value="desc">Mais novos</option>
+            </select>
+          </div>
+    </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pb-12 pt-12">
       {video.map((video) => (
         <>
           <div
-             onClick={() => handleVideoClick(video)}
+            onClick={() => handleVideoClick(video)}
             className='shadow-xl group w-80 rounded-xl relative hover:shadow-2xl cursor-pointer  hover:text-sky-500'
             key={video.id}>
             <div className="flex justify-center items-center transition  top-0 w-80 h-44 rounded-t-xl absolute group-hover:bg-sky-400/50 z-10">
-            <svg className='hidden group-hover:flex' xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#ecf3f3" viewBox="0 0 256 256"><path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"></path></svg>
+              <svg className='hidden group-hover:flex' xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#ecf3f3" viewBox="0 0 256 256"><path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"></path></svg>
             </div>
             <Image className='filter rounded-t-xl hue-rotate-10'
               src={video.thumbnail} alt={video.title} width={320} height={130} />
@@ -119,15 +127,15 @@ export default function VideoPage() {
           </div>
         </>
       ))}
-          <ReactModal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}
-          overlayClassName="custom-modal"
-          className="modal-content">
-            <h2>{videoModalProps.title}</h2>
-            <p>{videoModalProps.id}</p>
-            <p>{videoModalProps.description}</p>
-            <p>{videoModalProps.category}</p>
-            <button onClick={() => setIsModalOpen(false)}>Close Modal</button>
-          </ReactModal>
+      <ReactModal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}
+      overlayClassName="custom-modal"
+      className="modal-content">
+        <h2>{videoModalProps.title}</h2>
+        <p>{videoModalProps.id}</p>
+        <p>{videoModalProps.description}</p>
+        <p>{videoModalProps.category}</p>
+        <button onClick={() => setIsModalOpen(false)}>Close Modal</button>
+      </ReactModal>
       </div>
       <Pagination
         currentPage={currentPage}
