@@ -5,16 +5,8 @@ import videos from '../utils/videos'
 import Image from 'next/image'
 import Pagination from './pagination'
 import ReactModal from 'react-modal';
-
-type VideoProps = {
-  id: number
-  title: string
-  description: string
-  url: string
-  date: string
-  thumbnail: string
-  category: string
-}
+import { Modal } from './Modal'
+import { VideoProps } from '@/types/movie'
 
 
 export default function VideoPage() {
@@ -102,11 +94,11 @@ export default function VideoPage() {
 
           <div className="flex items-center justify-center gap-4">
             <p className='font-bold'>Ordernar por</p>
-            <select className='border-2 border-teal-900 text-teal-900 h-10 cursor-pointer rounded-xl'
+            <select className='border-2 border-teal-900 text-teal-900 p-2 cursor-pointer rounded-xl'
              value={sortOrder} onChange={() => sortVideos('All', sortOrder)}>
               <option value="asc" selected>Data de publicação</option>
-              <option value="asc">Mais antigos</option>
-              <option value="desc">Mais novos</option>
+              <option value="asc">Mais Novos</option>
+              <option value="desc">Mais Antigos</option>
             </select>
           </div>
     </div>
@@ -127,15 +119,9 @@ export default function VideoPage() {
           </div>
         </>
       ))}
-      <ReactModal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}
-      overlayClassName="custom-modal"
-      className="modal-content">
-        <h2>{videoModalProps.title}</h2>
-        <p>{videoModalProps.id}</p>
-        <p>{videoModalProps.description}</p>
-        <p>{videoModalProps.category}</p>
-        <button onClick={() => setIsModalOpen(false)}>Close Modal</button>
-      </ReactModal>
+      
+      <Modal isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} content={videoModalProps} />
+
       </div>
       <Pagination
         currentPage={currentPage}
