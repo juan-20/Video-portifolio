@@ -5,7 +5,7 @@ import  LogoImage  from '../assets/logo.png'
 export default function Navbar() {
   return (
     <nav className='p-8'>
-        <Image src={LogoImage} width={100} height={100} alt='Logo' />
+        <Image src={LogoImage} width={180} height={180} alt='Logo' />
     </nav>
   )
 }
