@@ -7,7 +7,6 @@ import Navbar from '@/components/navbar'
 import VideoPage from '@/app/videoPagination'
 import { VideoProps } from '@/types/movie'
 import getMovies from '@/utils/getVideos'
-import People from './teste'
 
 
 export default async function Home() {
@@ -18,7 +17,6 @@ export default async function Home() {
       <Navbar />
       <Hero />
       <VideoPage key={1} videos={data.result} />
-      {/* <People  /> */}
       <GraphHero />
       <Footer />
     </main>
