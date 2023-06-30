@@ -75,9 +75,9 @@ export default function VideoPage() {
   return (
     <div>
 
-    <div className='flex w-full justify-between gap-24 border-b-2 border-gray-300 pb-4 pt-12'>
+    <div className='flex flex-col lg:flex-row w-full justify-between gap-24 border-b-2 border-gray-300 pb-4 pt-12'>
  
-        <div className='flex w-fit gap-4'>
+        <div className='md:flex w-fit md:gap-4'>
           {categories.map((category) => (
             <button 
             className='border-2 border-teal-900 text-teal-900 cursor-pointer hover:border-sky-500 hover:text-sky-500 focus:bg-sky-500 focus:text-white  w-auto pr-4 pl-4 pt-1 pb-1 rounded-full' key={category} 
@@ -103,7 +103,7 @@ export default function VideoPage() {
           </div>
     </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pb-12 pt-12">
+      <div className="grid center  grid-cols-1 md:grid-cols-3 gap-4 pb-12 pt-12">
       {video.map((video) => (
         <>
           <div
