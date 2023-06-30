@@ -3,7 +3,7 @@ const nextConfig = {
     images: {
         domains: [
           "github.com" ,	
-    
+          'cdn.sanity.io'
         ]
       },
 }

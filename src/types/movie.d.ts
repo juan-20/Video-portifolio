@@ -4,7 +4,12 @@ export interface VideoProps {
   description: string;
   url: string;
   date: string;
-  thumbnail: 'https://github.com/juan-20/Video-portifolio/blob/main/src/assets/thumbnail.png?raw=true';
+  thumbnail: {
+    alt: string;
+    asset: {
+    _ref: string;
+    }
+  };
   category: "Agências" | "ChatBot" | "Marketing Digital" | "Geração de Leads" | "Mídia Paga";
   dowload?: DowloadProps[]
 }
