@@ -1,3 +1,5 @@
+
+import GraphHero from '@/components/GraphHero'
 import Hero from '@/components/hero'
 import Navbar from '@/components/navbar'
 import VideoPagination from '@/components/videoPagination'
@@ -8,6 +10,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <VideoPagination />
+      <GraphHero />
     </main>
   )
 }

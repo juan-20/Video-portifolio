@@ -73,7 +73,7 @@ export default function VideoPage() {
 
 
   return (
-    <div>
+    <section>
 
     <div className='flex flex-col lg:flex-row w-full justify-between gap-24 border-b-2 border-gray-300 pb-4 pt-12'>
  
@@ -128,6 +128,6 @@ export default function VideoPage() {
         totalPages={totalPages}
         onPageChange={handlePageChange}
       />
-    </div>
+    </section>
   )
 }

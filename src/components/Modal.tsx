@@ -56,7 +56,7 @@ export const Modal = ({ content, isModalOpen, setIsModalOpen }: ModalProps) => {
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#627397" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"></path></svg>
           </button>
         </div>
-          <div className="title text-center flex justify-center items-center gap-8">
+          <div className="title text-center flex justify-center items-center gap-8 pr-14 pl-14">
           <h2 className='text-sky-600 text-xl font-bold'>Webinar:
             <span className='text-teal-900'>{content.title}</span>
           </h2>
@@ -71,6 +71,7 @@ export const Modal = ({ content, isModalOpen, setIsModalOpen }: ModalProps) => {
               >
         </iframe>
 
+        <div className="p-2">
         <div className="">
           <h2 className='font-bold pb-2 pt-4 border-b-2 border-teal-900'>Descrição</h2>
           <p className='pt-2 w-full h-fit min-h-28 '>{content.description}</p>
@@ -93,6 +94,7 @@ export const Modal = ({ content, isModalOpen, setIsModalOpen }: ModalProps) => {
             ))}
           </div>
           </div>
+        </div>
         </div>
       </ReactModal>
     </>

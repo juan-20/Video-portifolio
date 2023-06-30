@@ -4,7 +4,7 @@ import assetTitle from '../assets/asset-header.png'
 
 export default function Hero() {
   return (
-    <div className='bg-sky-50 w-full h-auto flex flex-col items-center justify-center p-40 text-center'>
+    <section className='bg-sky-50 w-full h-auto flex flex-col items-center justify-center p-40 text-center'>
         <div className="flex flex-col justify-center items-center gap-8">
             <p className='border-2 border-sky-500 text-sky-500 uppercase pr-4 pl-4 pt-1 pb-1 rounded-t-full rounded-r-full font-bold w-60'>webinars exclusivos</p>
             <div className="title relative">
@@ -19,6 +19,6 @@ export default function Hero() {
                 e como aplicá-las no seu negócio</p>
             </div>
 
-    </div>
+    </section>
   )
 }
