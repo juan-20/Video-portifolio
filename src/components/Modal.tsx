@@ -49,7 +49,7 @@ export const Modal = ({ content, isModalOpen, setIsModalOpen }: ModalProps) => {
     <>
       <ReactModal isOpen={isModalOpen} onRequestClose={() => setIsModalOpen(false)}
         overlayClassName="custom-modal"
-        className="modal-content border-t-4 border-sky-600 w-1/3 h-5/6 rounded-xl">
+        className="modal-content border-t-4 border-sky-600 md:w-1/3 w-full h-fit rounded-xl">
         <div className="header flex flex-col items-start gap-4 pb-9">
         <div className="w-full flex items-end justify-end">
           <button className='' onClick={() => setIsModalOpen(false)}>
@@ -73,7 +73,7 @@ export const Modal = ({ content, isModalOpen, setIsModalOpen }: ModalProps) => {
 
         <div className="">
           <h2 className='font-bold pb-2 pt-4 border-b-2 border-teal-900'>Descrição</h2>
-          <p className='pt-2'>{content.description}</p>
+          <p className='pt-2 w-full h-fit min-h-28 '>{content.description}</p>
         </div>
         <div className="">
           <h2 className='font-bold pb-2 pt-4 border-b-2 border-teal-900'>Dowload</h2>
