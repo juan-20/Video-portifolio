@@ -6,6 +6,7 @@ import Link from 'next/link';
 import Image from 'next/image'
 import { notFound } from 'next/navigation';
 import { useRef, useState } from 'react';
+import SelectBox from '@/components/selectBox';
 
 interface MovieResponse {
     result: VideoProps[]
@@ -94,6 +95,10 @@ export default async function People() {
 //   }
 
   const categories = Array.from(new Set(videos.map((video) => video.category)))
+  const [selectedOption, setSelectedOption] = useState('');
+  const handleSelect = (selectedOption: string) => {
+    setSelectedOption(selectedOption);
+  };
 
 
   return (
@@ -111,6 +116,7 @@ export default async function People() {
             </select>
           </div>
         </div> */}
+        <SelectBox options={['Option 1', 'Option 2', 'Option 3']} onSelect={handleSelect}  />
         <div className="grid center  grid-cols-1 md:grid-cols-3 gap-4 pb-12 pt-12">
           {video.map((video) => (
             <div

@@ -5,22 +5,28 @@ import Image from 'next/image'
 import Pagination from '../components/pagination'
 import { Modal } from '../components/Modal'
 import { VideoProps } from '@/types/movie'
-
+import NextSanityImage from 'next-sanity-image';
+import { urlFor } from '@/utils/client'
 interface VideoPageProps{
-  videos: VideoProps[]	
+  result: VideoProps[]
 }
 
-export default function VideoPage(props: VideoPageProps) {
+interface ResultProps {
+  videos: VideoPageProps
+}
+
+export default function VideoPage(props: ResultProps) {
+  console.log(props);
   const [videos, setVideos] = useState<VideoProps[]>([])
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc')
   const [sortCategory, setSortCategory] = useState<string>('All')
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [videoModalProps, setVideoModalProps] = useState<VideoProps>(props.videos[0])
+  const [videoModalProps, setVideoModalProps] = useState<VideoProps>(props.videos.result[0])
   const videosPerPage = 9
   const startIndex = (currentPage - 1) * videosPerPage
   const endIndex = startIndex + videosPerPage
-  const allVideo: VideoProps[] = props.videos || []
+  const allVideo: VideoProps[] = props.videos.result
   console.log(allVideo);
   const [totalPages, setTototalPages] = useState(Math.ceil( allVideo.length / videosPerPage))
   const [video, setVideo] = useState<VideoProps[]>(allVideo.slice(startIndex, endIndex))
@@ -85,7 +91,7 @@ export default function VideoPage(props: VideoPageProps) {
 
   return(
     <section>
-      {props.videos.length === 0 ? <p>Nenhum video encontrado</p> : 
+      {props.videos.result.length === 0 ? <p>Nenhum video encontrado</p> : 
       <>
         <div className='flex flex-col lg:flex-row w-full justify-between gap-24 border-b-2 border-gray-300 pb-4 pt-12'>
           <div className="flex items-center justify-center gap-4">
@@ -107,8 +113,10 @@ export default function VideoPage(props: VideoPageProps) {
               <div className="flex justify-center items-center transition  top-0 w-80 h-44 rounded-t-xl absolute group-hover:bg-sky-400/50 z-10">
                 <svg className='hidden group-hover:flex' xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#ecf3f3" viewBox="0 0 256 256"><path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"></path></svg>
               </div>
-              <Image className='filter rounded-t-xl hue-rotate-10'
-                src={video.thumbnail} alt={video.title} width={320} height={130} />
+              <Image 
+                className='filter rounded-t-xl hue-rotate-10'
+                src={`https://cdn.sanity.io/images/26g2tdsi/dev/`+ video.thumbnail.asset._ref.toString().replace("image-", "").replace("-png", "") + ".png" } alt={video.title} width={320} height={130} 
+                />
               <h2 className='p-4 font-bold'>{video.title}</h2>
             </div>
           ))}

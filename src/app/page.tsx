@@ -1,3 +1,4 @@
+"use client"
 
 import GraphHero from '@/components/GraphHero'
 import Footer from '@/components/footer'
@@ -10,18 +11,16 @@ import People from './teste'
 
 
 export default async function Home() {
+  const data = { result: await getMovies(1500) }
 
-
-  const data: VideoProps[] = await getMovies(1500)
   return (
     <main className="flex min-h-screen flex-col items-center overflow-x-hidden">
       <Navbar />
       <Hero />
-      {/* <VideoPage key={1} videos={data} /> */}
-      <People  />
+      <VideoPage key={1} videos={data.result} />
+      {/* <People  /> */}
       <GraphHero />
       <Footer />
-      
     </main>
   )
 }
