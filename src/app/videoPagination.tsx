@@ -33,7 +33,7 @@ export default function VideoPage(props: ResultProps) {
 
   useEffect(() => {
     async function getData() {
-      const res = await fetch(`https://26g2tdsi.api.sanity.io/v2021-10-21/data/query/dev?query=*[_type == "post"]`);
+      const res = await fetch(`https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/dev?query=*[_type == "post"]`);
       const videos = await res.json();
       
       if (!res.ok) {
@@ -115,7 +115,7 @@ export default function VideoPage(props: ResultProps) {
               </div>
               <Image 
                 className='filter rounded-t-xl hue-rotate-10'
-                src={`https://cdn.sanity.io/images/26g2tdsi/dev/`+ video.thumbnail.asset._ref.toString().replace("image-", "").replace("-png", "") + ".png" } alt={video.title} width={320} height={130} 
+                src={`https://cdn.sanity.io/images/${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}/dev/`+ video.thumbnail.asset._ref.toString().replace("image-", "").replace("-png", "") + ".png" } alt={video.title} width={320} height={130} 
                 />
               <h2 className='p-4 font-bold'>{video.title}</h2>
             </div>

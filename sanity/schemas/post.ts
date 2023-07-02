@@ -11,6 +11,11 @@ export default defineType({
       type: 'string',
     }),
     defineField({
+      name: 'youtube_ID',
+      title: 'Youtube_ID',
+      type: 'string',
+    }),
+    defineField({
       name: 'id',
       title: 'id',
       type: 'slug',
