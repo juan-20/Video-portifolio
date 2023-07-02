@@ -1,14 +1,17 @@
- export default async function getMovies(
-    time: number = 0,
-    shouldError: boolean = false
-  ) {
-    const res = await fetch(
-      `https://26g2tdsi.api.sanity.io/v2021-10-21/data/query/dev?query=*[_type == "post"]`
-    )
-    if (!res.ok || shouldError) {
-      throw new Error(`An error has occured: ${res.status}`)
+export default async function getMovies(
+  time: number = 0,
+  shouldError: boolean = false
+) {
+  const res = await fetch(
+    `https://${process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}.api.sanity.io/v2021-10-21/data/query/dev?query=*[_type == "post"]`,
+    {
+      mode: 'cors'
     }
-  
-    return res.json()
+  );
+
+  if (!res.ok || shouldError) {
+    throw new Error(`An error has occurred: ${res.status}`);
   }
-  
+
+  return res.json();
+}
