@@ -8,7 +8,7 @@ import raring from '../assets/rating.webp'
 
 export default function GraphHero() {
   return (
-    <section className='lg:grid grid-cols-2 justify-center items-center'>
+    <section className='graphHero lg:grid grid-cols-2 justify-center items-center'>
         <Image src={graphImage} alt='Formulário de Contato - 150 Leads, Botão do Whatsapp - 230 Leads, Leadster - 450 Leads com 14 dias grátis' />
 
         <div className="flex flex-col">

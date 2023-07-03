@@ -17,7 +17,7 @@ export default defineType({
     }),
     defineField({
       name: 'id',
-      title: 'id',
+      title: 'id (is the number of the video)',
       type: 'number',
     }),
     defineField({
