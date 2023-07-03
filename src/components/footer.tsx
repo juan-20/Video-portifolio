@@ -12,7 +12,7 @@ export default function footer() {
       <Image src={LogoImage} width={300} height={180} alt='Logo' />
       <p>Transformando visitantes em clientes</p>
       </div>
-    <div className="grid w-2/3 grid-cols-2 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
+    <div className="grid w-2/3 grid-cols-1 gap-8 px-4 py-6 lg:py-8 md:grid-cols-4">
         <div>
             <h2 className="mb-6 text-sm font-semibold ">Links Principais</h2>
             <ul className="text-gray-500 dark:text-gray-400 font-medium">
@@ -94,7 +94,7 @@ export default function footer() {
         <span className="text-sm text-teal-900 sm:text-center">Copyright © 2015 - 2023 Todos os direitos reservados | <a className='text-sky-500' href="https://leadster.com.br/">Leadster</a>
         </span>
         <div className="flex mt-4 space-x-6 sm:justify-center md:mt-0">
-           <p className='text-sm'>Rua José Loureiro, 464 - Centro - Curitiba PR - CEPÇ 80010-000 | Termos de uso</p>
+           <p className='text-sm'>Rua José Loureiro, 464 - Centro - Curitiba PR - CEP: 80010-000 | Termos de uso</p>
         </div>
       </div>
 </footer>

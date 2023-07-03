@@ -81,7 +81,7 @@ export const Modal = ({ content, isModalOpen, setIsModalOpen }: ModalProps) => {
           <div className="pb-4 pt-2">
           <div className="dowload flex gap-2 pt-2 pb-2
           whitespace-nowrap scroll-smooth relative overflow-x-auto">
-            {content.dowload?.map((item, index)=>(
+            {content.download?.map((item, index)=>(
             <button 
             onClick={() => handleDownload(item.link, item.type)}
             className={`${textColor[item.type]} ${textBackground[item.type]} rounded flex justify-center items-center`}

@@ -16,7 +16,6 @@ interface ResultProps {
 }
 
 export default function VideoPage(props: ResultProps) {
-  console.log(props);
   const [videos, setVideos] = useState<VideoProps[]>([])
   const [currentPage, setCurrentPage] = useState<number>(1)
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc')
@@ -27,7 +26,6 @@ export default function VideoPage(props: ResultProps) {
   const startIndex = (currentPage - 1) * videosPerPage
   const endIndex = startIndex + videosPerPage
   const allVideo: VideoProps[] = props.videos.result
-  console.log(allVideo);
   const [totalPages, setTototalPages] = useState(Math.ceil( allVideo.length / videosPerPage))
   const [video, setVideo] = useState<VideoProps[]>(allVideo.slice(startIndex, endIndex))
 
@@ -58,10 +56,8 @@ export default function VideoPage(props: ResultProps) {
       sorted = sorted.filter((video) => video.category === sortCategory)
     }
     sorted = sorted.sort((a, b) => {
-      console.log(a);
-      console.log(b);
-      const dateA = a.id
-      const dateB = b.id
+      const dateA = a.numerVideo
+      const dateB = b.numerVideo
       if (dateA > dateB) {
         return sortOrder === 'asc' ? -1 : 1
       }
@@ -93,9 +89,9 @@ export default function VideoPage(props: ResultProps) {
     <section>
       {props.videos.result.length === 0 ? <p>Nenhum video encontrado</p> : 
       <>
-        <div className='flex flex-col lg:flex-row w-full justify-between gap-24 border-b-2 border-gray-300 pb-4 pt-12'>
+        <div className='flex flex-col lg:flex-row items-center w-full justify-between gap-24 border-b-2 border-gray-300 pb-4 pt-12'>
 
-          <div className='md:flex w-fit md:gap-4'>
+          <div className='flex flex-col lg:flex-row lg:gap-0 gap-4 justify-center items-center h-auto w-fit md:gap-4'>
             {categories.map((category) => (
               <button 
               className='border-2 border-teal-900 text-teal-900 cursor-pointer hover:border-sky-500 hover:text-sky-500 focus:bg-sky-500 focus:text-white  w-auto pr-4 pl-4 pt-1 pb-1 rounded-full' key={category} 
@@ -103,11 +99,11 @@ export default function VideoPage(props: ResultProps) {
                 {category}
               </button>
             ))}
-              {/* <button 
+              <button 
               className='border-2 border-teal-900 text-teal-900 cursor-pointer hover:border-sky-500 hover:text-sky-500 focus:bg-sky-500 focus:text-white  w-auto pr-4 pl-4 pt-1 pb-1 rounded-full' 
               onClick={(e) => {sortVideos('All', sortOrder), setSortCategory('All'), handlePageChange}}>
-                All
-              </button> */}
+                Todos
+              </button>
             </div>
           <div className="flex items-center justify-center gap-4">
             <p className='font-bold'>Ordernar por</p>
@@ -124,7 +120,7 @@ export default function VideoPage(props: ResultProps) {
             <div
               onClick={() => handleVideoClick(video)}
               className='shadow-xl group w-80 rounded-xl relative hover:shadow-2xl cursor-pointer  hover:text-sky-500'
-              key={video.id}>
+              key={video.numerVideo}>
               <div className="flex justify-center items-center transition  top-0 w-80 h-44 rounded-t-xl absolute group-hover:bg-sky-400/50 z-10">
                 <svg className='hidden group-hover:flex' xmlns="http://www.w3.org/2000/svg" width="80" height="80" fill="#ecf3f3" viewBox="0 0 256 256"><path d="M240,128a15.74,15.74,0,0,1-7.6,13.51L88.32,229.65a16,16,0,0,1-16.2.3A15.86,15.86,0,0,1,64,216.13V39.87a15.86,15.86,0,0,1,8.12-13.82,16,16,0,0,1,16.2.3L232.4,114.49A15.74,15.74,0,0,1,240,128Z"></path></svg>
               </div>

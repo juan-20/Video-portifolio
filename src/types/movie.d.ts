@@ -1,9 +1,8 @@
 export interface VideoProps {
-  id: number;
+  numerVideo: number;
   title: string;
   description: string;
   url: string;
-  date: string;
   thumbnail: {
     alt: string;
     asset: {
@@ -11,7 +10,7 @@ export interface VideoProps {
     }
   };
   category: "Agências" | "ChatBot" | "Marketing Digital" | "Geração de Leads" | "Mídia Paga";
-  dowload?: DowloadProps[]
+  download?: DowloadProps[]
 }
 
 interface VideoId {

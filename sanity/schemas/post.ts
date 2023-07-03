@@ -11,13 +11,44 @@ export default defineType({
       type: 'string',
     }),
     defineField({
-      name: 'youtube_ID',
-      title: 'Youtube_ID',
+      name: 'url',
+      title: 'Url',
       type: 'string',
     }),
     defineField({
-      name: 'id',
-      title: 'id (is the number of the video)',
+      name: 'download',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            {
+              name: 'link',
+              type: 'url'
+            },
+            {
+              name: 'name',
+              type: 'string'
+            },
+            {
+              name: 'type',
+              type: 'string',
+              options: {
+                list: [
+                  { title: 'XLS', value: 'xls' },
+                  { title: 'DOC', value: 'doc' },
+                  { title: 'PPT', value: 'ppt' },
+                  { title: 'ZIP', value: 'zip' }
+                ]
+              }
+            }
+          ]
+        }
+      ],
+    }),
+    defineField({
+      name: 'numerVideo',
+      title: 'Numero do video (is the number of the video)',
       type: 'number',
     }),
     defineField({
@@ -44,11 +75,15 @@ export default defineType({
       name: 'category',
       title: 'category',
       type: 'string',
-    }),
-    defineField({
-      name: 'date',
-      title: 'date',
-      type: 'date',
+      options: {
+        list: [
+          { title: 'Agências', value: 'Agências' },
+          { title: 'ChatBot', value: 'ChatBot' },
+          { title: 'Marketing Digital', value: 'Marketing Digital' },
+          { title: 'Geração de Leads', value: 'Geração de Leads' },
+          { title: 'Mídia Paga', value: 'Mídia Paga' },
+        ]
+      }
     }),
   ],
 
