@@ -1,4 +1,4 @@
-export default async function getMovies(
+export default async function getVideos(
   time: number = 0,
   shouldError: boolean = false
 ) {
