@@ -76,6 +76,7 @@ export const Modal = ({ content, isModalOpen, setIsModalOpen }: ModalProps) => {
           <h2 className='font-bold pb-2 pt-4 border-b-2 border-teal-900'>Descrição</h2>
           <p className='pt-2 w-full h-fit min-h-28 '>{content.description}</p>
         </div>
+        {content.download ? (
         <div className="">
           <h2 className='font-bold pb-2 pt-4 border-b-2 border-teal-900'>Dowload</h2>
           <div className="pb-4 pt-2">
@@ -95,6 +96,7 @@ export const Modal = ({ content, isModalOpen, setIsModalOpen }: ModalProps) => {
           </div>
           </div>
         </div>
+        ) : null}
         </div>
       </ReactModal>
     </>

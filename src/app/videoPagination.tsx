@@ -50,33 +50,37 @@ export default function VideoPage(props: ResultProps) {
     setVideo(allVideo.slice(startIndex, endIndex))
   }
 
-  function sortVideos(sortCategory: string, sortOrder: string) {
-    let sorted = videos
-    if (sortCategory !== 'All') {
-      sorted = sorted.filter((video) => video.category === sortCategory)
-    }
-    sorted = sorted.sort((a, b) => {
-      const dateA = a.numerVideo
-      const dateB = b.numerVideo
-      if (dateA > dateB) {
-        return sortOrder === 'asc' ? -1 : 1
-      }
-      if (dateA < dateB) {
-        return sortOrder === 'desc' ? 1 : -1
-      }
-      const categoryA = a.category.toLowerCase()
-      const categoryB = b.category.toLowerCase()
-      if (categoryA < categoryB) {
-        return sortOrder === 'asc' ? -1 : 1
-      }
-      if (categoryA > categoryB) {
-        return sortOrder === 'asc' ? 1 : -1
-      }
-      return 0
-    })
-    setVideo(sorted.slice(startIndex, endIndex))
-    setTototalPages(Math.ceil(sorted.length / videosPerPage))
+function sortVideos(sortCategory: string, sortOrder: string) {
+  debugger
+  let sorted = videos;
+  console.log(sortOrder);
+  if (sortCategory !== 'All') {
+    sorted = sorted.filter((video) => video.category === sortCategory);
   }
+  sorted = sorted.sort((a, b) => {
+    if (a.numerVideo > b.numerVideo) {
+      return sortOrder === 'asc' ? -1 : 1;
+    }
+    if (a.numerVideo < b.numerVideo) {
+      return sortOrder === 'desc' ? -1 : 1;
+    }
+    if (a.category.toLowerCase() > b.category.toLowerCase()) {
+      return sortOrder === 'desc' ? -1 : 1;
+    }
+    if (a.category.toLowerCase() < b.category.toLowerCase()) {
+      return sortOrder === 'asc' ? -1 : 1;
+    }
+    return 0;
+  });
+  setVideo(sorted.slice(startIndex, endIndex));
+  setTototalPages(Math.ceil(sorted.length / videosPerPage));
+}
+
+
+const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  setSortOrder(event.target.value as 'desc' | 'asc');
+  sortVideos('All', event.target.value as 'desc' | 'asc')
+};
 
   const handleVideoClick = (video: VideoProps) => {
     setIsModalOpen(true)
@@ -106,10 +110,10 @@ export default function VideoPage(props: ResultProps) {
               </button>
             </div>
           <div className="flex items-center justify-center gap-4">
-            <p className='font-bold'>Ordernar por</p>
-            <select className='border-2 border-teal-900 text-teal-900 p-2 cursor-pointer rounded-xl'
-              value={sortOrder} onChange={() => sortVideos('All', sortOrder)}>
-              <option value="asc" defaultValue={'asc'}>Data de publicação</option>
+            <label htmlFor="sortOrder" className='font-bold'>Ordernar por</label>
+            <select name="sortOrder" className='border-2 border-teal-900 text-teal-900 p-2 cursor-pointer rounded-xl'
+              value={sortOrder} onChange={handleSelectChange}>
+              <option value="" >Data de publicação</option>
               <option value="asc">Mais Novos</option>
               <option value="desc">Mais Antigos</option>
             </select>
