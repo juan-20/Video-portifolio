@@ -94,6 +94,21 @@ export default function VideoPage(props: ResultProps) {
       {props.videos.result.length === 0 ? <p>Nenhum video encontrado</p> : 
       <>
         <div className='flex flex-col lg:flex-row w-full justify-between gap-24 border-b-2 border-gray-300 pb-4 pt-12'>
+
+          <div className='md:flex w-fit md:gap-4'>
+            {categories.map((category) => (
+              <button 
+              className='border-2 border-teal-900 text-teal-900 cursor-pointer hover:border-sky-500 hover:text-sky-500 focus:bg-sky-500 focus:text-white  w-auto pr-4 pl-4 pt-1 pb-1 rounded-full' key={category} 
+              onClick={() => {sortVideos(category, sortOrder), setSortCategory(category), handlePageChange}}>
+                {category}
+              </button>
+            ))}
+              {/* <button 
+              className='border-2 border-teal-900 text-teal-900 cursor-pointer hover:border-sky-500 hover:text-sky-500 focus:bg-sky-500 focus:text-white  w-auto pr-4 pl-4 pt-1 pb-1 rounded-full' 
+              onClick={(e) => {sortVideos('All', sortOrder), setSortCategory('All'), handlePageChange}}>
+                All
+              </button> */}
+            </div>
           <div className="flex items-center justify-center gap-4">
             <p className='font-bold'>Ordernar por</p>
             <select className='border-2 border-teal-900 text-teal-900 p-2 cursor-pointer rounded-xl'

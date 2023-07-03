@@ -18,11 +18,7 @@ export default defineType({
     defineField({
       name: 'id',
       title: 'id',
-      type: 'slug',
-      options: {
-        source: 'title',
-        maxLength: 96,
-      },
+      type: 'number',
     }),
     defineField({
       name: 'description',
@@ -46,14 +42,13 @@ export default defineType({
     }),
     defineField({
       name: 'category',
-      title: 'Category',
-      type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}],
+      title: 'category',
+      type: 'string',
     }),
     defineField({
       name: 'date',
       title: 'date',
-      type: 'datetime',
+      type: 'date',
     }),
   ],
 

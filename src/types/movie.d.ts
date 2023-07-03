@@ -14,6 +14,11 @@ export interface VideoProps {
   dowload?: DowloadProps[]
 }
 
+interface VideoId {
+  _type: string;
+  current: string;
+}
+
 interface DowloadProps {
   name: string,
   type: 'doc' | 'ppt' | 'xls' | 'zip'
